@@ -1,0 +1,39 @@
+language: julia
+os:
+  - linux
+julia:
+  - 1.0
+notifications:
+  email: false
+git:
+  depth: 99999999
+cache:
+  timeout: 1000
+  directories:
+    - downloads
+env:
+  global:
+    - BINARYBUILDER_DOWNLOADS_CACHE=downloads
+    - BINARYBUILDER_AUTOMATIC_APPLE=false
+sudo: required
+
+# Before anything else, get the latest versions of things
+before_script:
+  - julia -e 'using Pkg; pkg"add BinaryProvider"; pkg"add BinaryBuilder#master"; Pkg.build()'
+
+script:
+  - julia build_tarballs.jl
+
+
+deploy:
+    provider: releases
+    api_key:
+        # Note; this api_key is only valid for ederc/GBBuilder; you need
+        # to make your own: https://docs.travis-ci.com/user/deployment/releases/
+        secure: QDyflTQXc2CyAHApkGYITbDyHsLqJwromH1/oGGwg+l0ZQG/Wgv3lKkuUkqCo+ViUZnUAYo7AOLk+8bqo2koQaZ+lyi3/xdpVQ2Lrxtk9BQnXTtak+VF2SrR2QydA87L9qknjrq5zCR9uZFKue8Vocnx66y2PRS4kVyl0qQQ+nwYTELjcQNTVGI5va8Uvap07hl/V402XuUnuPi2sQrnrn9E54zIYtCNTJ4uBkrJdnyvEUtpeSLQFY7R8gLmwgt0p2XbPYh4p6SVshIQ3msRcj0yrxhzjzrr6iRBnThByVMDi8WPdv6xT0RhVAQ2arC2fdbM6CQVhLokGSSH/YqBMcgq481nk4FyQ+fkVn54F7zY/zVT1birnAhdBwtx7FX4cEpf4RWboS8UOPuiOQ0pZAXTzVkP2PuCnMNehv7XjKZyFPgGwUhHbEMhUPshvnrEniMR40moLmVO8QdFe8zdPw9M8a/r0y9A1UmELR5yALCVleTRT8zWOU1wqEZEZdhsZtvH+hAjITKXnkyb3QWrAnpyM1u6Rj3I+/M2lHaO9G89lwFsE3kn16W031W4xgxlZD4bnECR1DYyo3DpH08Q1ROWClaWfm13He1unUC206KA9cFiXIWWQU9uEqLJp1cmzIV0BuK/SgTP1en3re8GKxC8G3ofjsua6m3KTmuF+eg=
+    file_glob: true
+    file: products/*
+    skip_cleanup: true
+    on:
+        repo: ederc/GBBuilder
+        tags: true
