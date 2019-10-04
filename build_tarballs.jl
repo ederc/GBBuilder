@@ -17,7 +17,7 @@ script = raw"""
 cd $WORKSPACE/srcdir
 cd gb/
 ./autogen.sh 
-CFLAGS="-march=core2" ./configure --enable-shared --disable-static --with-gmp=$prefix --prefix=$prefix --host=$target
+./configure --enable-shared --disable-static --with-gmp=$prefix --prefix=$prefix --host=$target
 make
 make install
 
