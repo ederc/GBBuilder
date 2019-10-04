@@ -17,10 +17,7 @@ script = raw"""
 cd $WORKSPACE/srcdir
 cd gb/
 ./autogen.sh 
-echo $CFLAGS
-./configure -h
 CFLAGS="-march=core2" ./configure --enable-shared --disable-static --with-gmp=$prefix --prefix=$prefix --host=$target
-grep "core2" config.log
 make
 make install
 
