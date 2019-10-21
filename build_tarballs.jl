@@ -3,7 +3,7 @@
 using BinaryBuilder
 
 name = "libgb"
-version = v"0.14-dev0"
+version = v"0.16-dev0"
 
 # Collection of sources required to build libgb
 sources = [
