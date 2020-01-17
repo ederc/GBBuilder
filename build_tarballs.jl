@@ -8,7 +8,7 @@ version = v"0.17-dev0"
 # Collection of sources required to build libgb
 sources = [
     "https://github.com/ederc/gb.git" =>
-    "f39d20d5ddb233bd588abeb6341c3ea99a948f4a",
+    "794f04d70cc9fc786f97f09bfb7440e6cddeb063",
 
 ]
 
