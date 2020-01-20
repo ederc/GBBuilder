@@ -3,12 +3,12 @@
 using BinaryBuilder
 
 name = "libgb"
-version = v"0.17-dev0"
+version = v"0.17-dev1"
 
 # Collection of sources required to build libgb
 sources = [
     "https://github.com/ederc/gb.git" =>
-    "794f04d70cc9fc786f97f09bfb7440e6cddeb063",
+    "bd9ade63d7257679a744bfa1af94da8ea8b74352",
 
 ]
 
